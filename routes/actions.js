@@ -39,9 +39,10 @@ router.put('/:action_id', async function(req, res) {
 })
 
 router.delete('/:action_id', async function (req, res) {
-    const [err] = await withCatch(actionModel.remove(req.params.action_id))
+    const id = req.params.action_id,
+    [err] = await withCatch(actionModel.remove(id))
     if (err) respondWithError(res, 500, "We ran into an error when attempting to delete the specified action.")
-    else res.status(200).json({message: "Successfully deleted the action with the id of " + req.params.id})
+    else res.status(200).json({message: "Successfully deleted the action with the id of " + id})
 })
 
 module.exports = router
