@@ -39,7 +39,7 @@ router.put('/:project_id', async function(req, res) {
     else res.status(200).json(project)
 })
 
-router.delete('/project_id', async function (req, res) {
+router.delete('/:project_id', async function (req, res) {
     const [err] = await withCatch(projectModel.remove(req.params.project_id))
     if (err) respondWithError(res, 500, "We ran into an error when attempting to delete the specified project.")
     else res.status(200).json({message: "Successfully deleted the project with the id of " + req.params.id})
