@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+I leanred about Express's middleware. Middleware, similar to middleware in Redux, is a process that can intercept a request, and pass additional information along with it, or abort it. I also learned about creating separate routers. You can compose several different routers, listening on different paths, and use them as if they were a piece of middleware. You can also pass separate pipelines of middleware to each individual router.
+
 - [ ] Describe Middleware?
+
+Middleware is a process that can intercept a request, and pass additional information along with it, or it can terminate the request early.
 
 - [ ] Describe a Resource?
 
+A resource is any piece of data that exists on your API that you're serving to the client. Backend development is all about resource management. CORS stands for "Cross Origin Resource Sharing", so there's that.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+APIs return what are known as status codes. Status codes are numbers that tell the status of the user's request. 1xx codes are informational, 2xx are codes are successes, 3xx codes are for redirection, 4xx codes are for client errors, and 5xx codes are server errors.
+
 - [ ] How can we partition our application into sub-applications?
+
+We can partition our application into sub-applications by incorporating middleware and routers as middleware, each responsible for handling a specific set of endpoints.
 
 ## Project Setup
 
