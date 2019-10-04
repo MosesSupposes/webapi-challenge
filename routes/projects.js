@@ -18,7 +18,7 @@ router.get('/:project_id', async function(req, res) {
     else res.status(200).json(project)
 })
 
-router.post('/:project_id', async function(req, res) {
+router.post('/', async function(req, res) {
     const [err, project] = await withCatch(projectModel.insert(req.body))
     if (err) respondWithError(res, 400, {
         message: "Trouble inserting the specified project into the database.  Maybe you forgot some fields? Try again.", 
