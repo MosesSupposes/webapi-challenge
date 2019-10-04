@@ -31,7 +31,7 @@ router.put('/:project_id', async function(req, res) {
     const id = req.params.project_id, 
     changes = req.body,
     [err, project] = await withCatch(projectModel.update(id, changes))
-    
+
     if (err) respondWithError(res, 500, {
         message: "We ran into an error when attempting to update the specified project. Maybe you forgot some fields? Try again.",
         error: err
@@ -40,7 +40,7 @@ router.put('/:project_id', async function(req, res) {
 })
 
 router.delete('/project_id', async function (req, res) {
-    const [err] = await withCatch(projectModel.remove(req.params.id))
+    const [err] = await withCatch(projectModel.remove(req.params.project_id))
     if (err) respondWithError(res, 500, "We ran into an error when attempting to delete the specified project.")
     else res.status(200).json({message: "Successfully deleted the project with the id of " + req.params.id})
 })
