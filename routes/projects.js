@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.get('/', async function(req, res) {
     const [err, projects] = await withCatch(projectModel.get())
-    if (err) respondWithError(res, 404, "There are no projects yet.")
+    if (err) respondWithError(res, 404, "There are no projects yet. Add a new project and try again.")
     else res.status(200).json(projects)
 })
 
