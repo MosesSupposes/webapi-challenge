@@ -12,7 +12,7 @@ router.get('/', async function (req, res) {
 })
 
 router.get('/:action_id', async function(req, res) {
-    const [err, action] = await withCatch(actionModel.get(req.params.id))
+    const [err, action] = await withCatch(actionModel.get(req.params.action_id))
     if (err || !action) respondWithError(res, 404, "Couldn't find the action with the specified id.")
     else res.status(200).json(action)
 })
@@ -27,7 +27,7 @@ router.post('/', async function (req, res) {
 })
 
 router.put('/:action_id', async function(req, res) {
-    const id = req.params.id,
+    const id = req.params.action_id,
     changes = req.body,
     [err, action] = await withCatch(actionModel.update(id, changes))
 
@@ -39,7 +39,7 @@ router.put('/:action_id', async function(req, res) {
 })
 
 router.delete('/:action_id', async function (req, res) {
-    const [err] = await withCatch(actionModel.remove(req.params.id))
+    const [err] = await withCatch(actionModel.remove(req.params.action_id))
     if (err) respondWithError(res, 500, "We ran into an error when attempting to delete the specified action.")
     else res.status(200).json({message: "Successfully deleted the action with the id of " + req.params.id})
 })
