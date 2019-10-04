@@ -28,12 +28,10 @@ router.post('/', async function(req, res) {
 })
 
 router.put('/:project_id', async function(req, res) {
-    const id = req.params.id, 
+    const id = req.params.project_id, 
     changes = req.body,
     [err, project] = await withCatch(projectModel.update(id, changes))
-    console.log('ID', id)
-    console.log('CHANGES', changes)
-    console.log('THIS IS THE ERR',typeof err,  err)
+    
     if (err) respondWithError(res, 500, {
         message: "We ran into an error when attempting to update the specified project. Maybe you forgot some fields? Try again.",
         error: err
